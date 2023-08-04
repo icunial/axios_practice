@@ -20,4 +20,25 @@ function getTodos() {
     });
 }
 
-getTodos();
+//getTodos();
+
+// Post Request
+
+function addTodo() {
+  axios({
+    method: "get",
+    url: "https://jsonplaceholder.typicode.com/todos",
+    data: {
+      title: "New Todo",
+      completed: "false",
+    },
+  })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+addTodo();
