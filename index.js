@@ -86,8 +86,8 @@ function removeTodo() {
 function getData() {
   axios
     .all([
-      axios.get("https://jsonplaceholder.typicode.com/todos"),
-      axios.get("https://jsonplaceholder.typicode.com/todos"),
+      axios.get("https://jsonplaceholder.typicode.com/todos?_limit=5"),
+      axios.get("https://jsonplaceholder.typicode.com/posts"),
     ])
     /* .then((res) => {
       console.log(res[0].data);
@@ -95,10 +95,28 @@ function getData() {
     }) */
     .then(
       axios.spread((todos, posts) => {
-        console.log(posts);
+        console.log(todos.data);
       })
     )
     .catch((err) => console.error(err));
 }
+
+// getData();
+
+// Intercepting Requests & Responses
+axios.interceptors.request.use(
+  (config) => {
+    console.log(
+      `${config.method.toUpperCase()} request send to ${
+        config.url
+      } at ${new Date().getTime()}`
+    );
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 getData();
