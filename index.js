@@ -79,4 +79,21 @@ function removeTodo() {
     });
 }
 
-removeTodo();
+// removeTodo();
+
+// Simultaneous requests
+
+function getData() {
+  axios
+    .all([
+      axios.get("https://jsonplaceholder.typicode.com/todos"),
+      axios.get("https://jsonplaceholder.typicode.com/todos"),
+    ])
+    .then((res) => {
+      console.log(res[0].data);
+      console.log(res[1].data);
+    })
+    .catch((err) => console.error(err));
+}
+
+getData();
