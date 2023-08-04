@@ -25,14 +25,19 @@ function getTodos() {
 // Post Request
 
 function addTodo() {
-  axios({
-    method: "get",
+  /*   axios({
+    method: "post",
     url: "https://jsonplaceholder.typicode.com/todos",
     data: {
       title: "New Todo",
       completed: "false",
     },
-  })
+  }) */
+  axios
+    .post("https://jsonplaceholder.typicode.com/todos", {
+      title: "New Todo",
+      completed: false,
+    })
     .then((res) => {
       console.log(res.data);
     })
