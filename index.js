@@ -46,4 +46,22 @@ function addTodo() {
     });
 }
 
-addTodo();
+// addTodo();
+
+// Put Request
+
+function updateTodo() {
+  axios
+    .put("https://jsonplaceholder.typicode.com/todos/1", {
+      title: "Updated Todo",
+      completed: true,
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+updateTodo();
