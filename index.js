@@ -89,10 +89,15 @@ function getData() {
       axios.get("https://jsonplaceholder.typicode.com/todos"),
       axios.get("https://jsonplaceholder.typicode.com/todos"),
     ])
-    .then((res) => {
+    /* .then((res) => {
       console.log(res[0].data);
       console.log(res[1].data);
-    })
+    }) */
+    .then(
+      axios.spread((todos, posts) => {
+        console.log(posts);
+      })
+    )
     .catch((err) => console.error(err));
 }
 
