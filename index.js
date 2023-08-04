@@ -64,4 +64,19 @@ function updateTodo() {
     });
 }
 
-updateTodo();
+// updateTodo();
+
+// Delete Request
+
+function removeTodo() {
+  axios
+    .delete("https://jsonplaceholder.typicode.com/todos/1")
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+removeTodo();
