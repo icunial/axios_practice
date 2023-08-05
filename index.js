@@ -195,4 +195,28 @@ function errorHandling() {
     });
 }
 
-errorHandling();
+//errorHandling();
+
+// Cancel Token
+
+function cancelToken() {
+  const source = axios.CancelToken.source();
+  axios
+    .get("https://jsonplaceholder.typicode.com/todoss", {
+      cancelToken: source.token,
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((thrown) => {
+      if (axios.isCancel(thrown)) {
+        console.log(`Request canceled`, thrown.message);
+      }
+    });
+
+  if (true) {
+    source.cancel("Request canceled");
+  }
+}
+
+cancelToken();
