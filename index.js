@@ -1,5 +1,8 @@
 const axios = require("axios");
 
+// AXIOS GLOBALS
+axios.defaults.headers.common["X-Auth-Token"] = "sometoken";
+
 // Get Request
 
 function getTodos() {
