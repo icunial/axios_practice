@@ -219,4 +219,14 @@ function cancelToken() {
   }
 }
 
-cancelToken();
+//cancelToken();
+
+// AXIOS Instances
+
+const axiosInstance = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com",
+});
+
+axiosInstance.get("/comments").then((res) => {
+  console.log(res.data);
+});
