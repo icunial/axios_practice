@@ -186,6 +186,11 @@ function errorHandling() {
         console.log(err.response.data);
         console.log(err.response.status);
         console.log(err.response.headers);
+      } else if (err.request) {
+        // Request was made but no response
+        console.error(err.request);
+      } else {
+        console.error(err.message);
       }
     });
 }
