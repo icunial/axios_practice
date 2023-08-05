@@ -14,7 +14,9 @@ function getTodos() {
   //     },
   // })
   axios
-    .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
+    .get("https://jsonplaceholder.typicode.com/todos?_limit=5", {
+      timeout: 5,
+    })
     .then((res) => {
       console.log(res.data);
     })
