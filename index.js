@@ -167,7 +167,27 @@ function transformResponse() {
     }),
   };
 
-  axios(options).then((res) => console.log(res.data));
+  axios(options).then((res) => console.log(res.config));
 }
 
-transformResponse();
+//transformResponse();
+
+// Error Handling
+
+function errorHandling() {
+  axios
+    .get("https://jsonplaceholder.typicode.com/todoss")
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      if (err.response) {
+        // Server responded with a status other than 200 range
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
+      }
+    });
+}
+
+errorHandling();
