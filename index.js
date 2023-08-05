@@ -147,4 +147,24 @@ function customHeaders() {
     });
 }
 
-customHeaders();
+//customHeaders();
+
+// Transforming requests & responses
+
+function transformResponse() {
+  const options = {
+    method: "post",
+    url: "https://jsonplaceholder.typicode.com/todos",
+    data: {
+      title: "Hello World!",
+    },
+    transformResponse: axios.defaults.transformResponse.concat((data) => {
+      data.title = data.title.toUpperCase();
+      return data;
+    }),
+  };
+
+  axios(options).then((res) => console.log(res.data));
+}
+
+transformResponse();
