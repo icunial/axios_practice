@@ -119,4 +119,32 @@ axios.interceptors.request.use(
   }
 );
 
-getData();
+//getData();
+
+// Costum Headers
+
+function customHeaders() {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "someToken",
+    },
+  };
+  axios
+    .post(
+      "https://jsonplaceholder.typicode.com/todos",
+      {
+        title: "New Todo",
+        completed: false,
+      },
+      config
+    )
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+customHeaders();
